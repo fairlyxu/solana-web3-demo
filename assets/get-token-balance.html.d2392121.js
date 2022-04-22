@@ -1,0 +1,1 @@
+const t={key:"v-325423d2",path:"/zh/tour/get-token-balance.html",title:"Get Token Balance",lang:"zh-TW",frontmatter:{},excerpt:"",headers:[],git:{updatedTime:1636285795e3,contributors:[{name:"yihau",email:"a122092487@gmail.com",commits:1}]},filePathRelative:"zh/tour/get-token-balance.md"};export{t as data};

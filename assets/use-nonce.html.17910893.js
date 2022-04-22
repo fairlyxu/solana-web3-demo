@@ -1,0 +1,1 @@
+const e={key:"v-0fb23272",path:"/zh/advanced/durable-nonce/use-nonce.html",title:"Use Nonce",lang:"zh-TW",frontmatter:{},excerpt:"",headers:[],git:{updatedTime:1636285795e3,contributors:[{name:"yihau",email:"a122092487@gmail.com",commits:1}]},filePathRelative:"zh/advanced/durable-nonce/use-nonce.md"};export{e as data};

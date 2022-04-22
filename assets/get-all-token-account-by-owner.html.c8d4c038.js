@@ -1,0 +1,1 @@
+const e={key:"v-3b792eec",path:"/zh/advanced/token/get-all-token-account-by-owner.html",title:"Get All Token Account By Owner",lang:"zh-TW",frontmatter:{},excerpt:"",headers:[],git:{updatedTime:1636285795e3,contributors:[{name:"yihau",email:"a122092487@gmail.com",commits:1}]},filePathRelative:"zh/advanced/token/get-all-token-account-by-owner.md"};export{e as data};

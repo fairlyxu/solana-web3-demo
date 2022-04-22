@@ -1,0 +1,1 @@
+const e={key:"v-5f6b2839",path:"/advanced/metaplex/get-tokenmeta.html",title:"Get Token Metadata",lang:"en-US",frontmatter:{},excerpt:"",headers:[],git:{updatedTime:1636285795e3,contributors:[{name:"yihau",email:"a122092487@gmail.com",commits:1}]},filePathRelative:"advanced/metaplex/get-tokenmeta.md"};export{e as data};

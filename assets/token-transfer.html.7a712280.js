@@ -1,0 +1,1 @@
+const t={key:"v-0f58e42a",path:"/zh/tour/token-transfer.html",title:"Token Transfer",lang:"zh-TW",frontmatter:{},excerpt:"",headers:[],git:{updatedTime:1636285795e3,contributors:[{name:"yihau",email:"a122092487@gmail.com",commits:1}]},filePathRelative:"zh/tour/token-transfer.md"};export{t as data};

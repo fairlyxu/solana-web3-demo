@@ -1,0 +1,1 @@
+const e={key:"v-77436f26",path:"/zh/advanced/durable-nonce/query-nonce.html",title:"Query Nonce",lang:"zh-TW",frontmatter:{},excerpt:"",headers:[],git:{updatedTime:1636285795e3,contributors:[{name:"yihau",email:"a122092487@gmail.com",commits:1}]},filePathRelative:"zh/advanced/durable-nonce/query-nonce.md"};export{e as data};

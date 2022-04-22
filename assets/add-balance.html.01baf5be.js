@@ -1,0 +1,1 @@
+const a={key:"v-4532b74b",path:"/zh/advanced/token/wrapped-sol/add-balance.html",title:"Add Balance",lang:"zh-TW",frontmatter:{},excerpt:"",headers:[],git:{updatedTime:1636285795e3,contributors:[{name:"yihau",email:"a122092487@gmail.com",commits:1}]},filePathRelative:"zh/advanced/token/wrapped-sol/add-balance.md"};export{a as data};

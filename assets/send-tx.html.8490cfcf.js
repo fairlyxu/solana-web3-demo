@@ -1,0 +1,72 @@
+import{_ as n,e as s}from"./app.50ff3e54.js";const a={},p=s(`<h1 id="send-tx" tabindex="-1"><a class="header-anchor" href="#send-tx" aria-hidden="true">#</a> Send Tx</h1><div class="language-typescript ext-ts line-numbers-mode"><pre class="language-typescript"><code><span class="token keyword">import</span> <span class="token punctuation">{</span>
+  Keypair<span class="token punctuation">,</span>
+  Transaction<span class="token punctuation">,</span>
+  SystemProgram<span class="token punctuation">,</span>
+  sendAndConfirmTransaction<span class="token punctuation">,</span>
+  sendAndConfirmRawTransaction<span class="token punctuation">,</span>
+<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;@solana/web3.js&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> <span class="token constant">CONNECTION</span><span class="token punctuation">,</span> <span class="token constant">FEE_PAYER</span> <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;../../helper/const&quot;</span><span class="token punctuation">;</span>
+
+<span class="token comment">// \u767C\u9001tx</span>
+
+<span class="token comment">// \u5728\u524D\u9762\u7684\u4F8B\u5B50\u6211\u5011\u90FD\u662F\u7528\u7528sendTransaction\u7684\u65B9\u5F0F\u4F86\u767C\u9001\u4EA4\u6613\uFF0C\u9019\u908A\u4ECB\u7D39\u53E6\u5916\u5169\u7A2E\u65B9\u5F0F</span>
+<span class="token comment">// \u53EF\u4EE5\u4F9D\u7167\u4E0D\u540C\u60C5\u6CC1\u81EA\u5DF1\u9078\u64C7\u8981\u4F7F\u7528\u54EA\u4E00\u7A2E</span>
+
+<span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// \u9019\u908A\u62FFtransfer\u7684tx\u7576\u4F5C\u4F8B\u5B50</span>
+  <span class="token keyword">let</span> to <span class="token operator">=</span> Keypair<span class="token punctuation">.</span><span class="token function">generate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">\`</span><span class="token string">to: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">\${</span>to<span class="token punctuation">.</span>publicKey<span class="token punctuation">.</span><span class="token function">toBase58</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">\`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">let</span> tx <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Transaction</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  tx<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>
+    SystemProgram<span class="token punctuation">.</span><span class="token function">transfer</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      fromPubkey<span class="token operator">:</span> <span class="token constant">FEE_PAYER</span><span class="token punctuation">.</span>publicKey<span class="token punctuation">,</span>
+      toPubkey<span class="token operator">:</span> to<span class="token punctuation">.</span>publicKey<span class="token punctuation">,</span>
+      lamports<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  tx<span class="token punctuation">.</span>feePayer <span class="token operator">=</span> <span class="token constant">FEE_PAYER</span><span class="token punctuation">.</span>publicKey<span class="token punctuation">;</span>
+
+  <span class="token comment">// 1. \u7C3D\u540D + \u767C\u9001</span>
+  <span class="token comment">// \u53EA\u7BA1\u767C\u51FA\u4EA4\u6613\uFF0C\u4E0D\u7BA1\u93C8\u4E0A\u5340\u584A\u72C0\u6CC1 (\u524D\u9762\u7684\u57FA\u790E\u7BC4\u4F8B\u90FD\u662F\u4F7F\u7528\u9019\u7A2E)</span>
+  <span class="token comment">// console.log(\`txhash: \${await CONNECTION.sendTransaction(tx, [FEE_PAYER])}\`);</span>
+
+  <span class="token comment">// 2. \u7C3D\u540D + \u767C\u9001 + \u78BA\u8A8D</span>
+  <span class="token comment">// \u9019\u500B\u65B9\u6CD5\u6703\u7B49\u5230\u5340\u584A\u78BA\u8A8D\u5B8C\u6210\u4E4B\u5F8C\u624D\u6703\u56DE\u50B3txhash</span>
+  <span class="token comment">// console.log(\`txhash: \${await sendAndConfirmTransaction(CONNECTION, tx, [FEE_PAYER])}\`);</span>
+
+  <span class="token comment">// 3. \u7C3D\u540D =&gt; \u767C\u9001</span>
+  <span class="token comment">// \u524D\u5169\u7A2E\u65B9\u5F0F\u90FD\u662Fweb3\u5E6B\u6211\u5011\u5305\u597D\u7684\u65B9\u6CD5\uFF0C\u53EF\u4EE5\u4E00\u9375\u767C\u9001\u4EA4\u6613</span>
+  <span class="token comment">// \u7B2C\u4E09\u7A2E\u6BD4\u8F03\u63A5\u8FD1\u8DDF\u539F\u59CB\u7684rpc\u4E92\u52D5</span>
+  <span class="token comment">// \u5C0D\u9019\u7A2E\u65B9\u6CD5\u6709\u6982\u5FF5\u5F8C\u8F49\u53BB\u5176\u4ED6\u7684\u8A9E\u8A00\u958B\u767C\u6BD4\u8F03\u4E0D\u6703\u5361\u95DC</span>
+  <span class="token comment">// \u5728\u4E0A\u9762\u8A2D\u5B9A\u5B8C instruction \u548C feePayer\u4E4B\u5F8C</span>
+  <span class="token comment">// \u9019\u908A\u6703\u9700\u8981\u518D\u591A\u8A2D\u5B9A\u4E00\u500B\u6771\u897F \`blockhash\`</span>
+  <span class="token comment">// solana\u5728\u767C\u9001\u4EA4\u6613\u6642\u6703\u9700\u8981\u5C07\u6700\u8FD1\u7684blockhash\u5305\u9032tx\u5167\u4E00\u8D77\u7C3D\u540D\u9001\u51FA</span>
+  <span class="token comment">// \u5982\u679C\u93C8\u4E0A\u767C\u73FE\u4F60\u5E36\u7684blockhash\u8DDD\u96E2\u93C8\u4E0A\u6700\u65B0\u7684blockhash\u592A\u9060\u7684\u8A71</span>
+  <span class="token comment">// \u6703\u76F4\u63A5\u62D2\u7D55tx\uFF0C\u5982\u679C\u4F60\u6709\u9700\u8981\u66AB\u5B58\u4EA4\u6613\u4E00\u9663\u5B50\u624D\u767C\u51FA\u7684\u9700\u6C42\uFF0C\u53EF\u4EE5\u53C3\u95B1durable nonce\u7BC7\u7684\u4ECB\u7D39</span>
+
+  <span class="token comment">// a. recent blockhash</span>
+  tx<span class="token punctuation">.</span>recentBlockhash <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">await</span> <span class="token constant">CONNECTION</span><span class="token punctuation">.</span><span class="token function">getRecentBlockhash</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>blockhash<span class="token punctuation">;</span>
+
+  <span class="token comment">// b. \u7C3D\u540D</span>
+  tx<span class="token punctuation">.</span><span class="token function">sign</span><span class="token punctuation">(</span><span class="token operator">...</span><span class="token punctuation">[</span><span class="token constant">FEE_PAYER</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// c. \u5E8F\u5217\u5316\u4EA4\u6613</span>
+  <span class="token keyword">const</span> rawTx <span class="token operator">=</span> tx<span class="token punctuation">.</span><span class="token function">serialize</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// d. base64 encode</span>
+  <span class="token keyword">const</span> encodedTransaction <span class="token operator">=</span> Buffer<span class="token punctuation">.</span><span class="token function">from</span><span class="token punctuation">(</span>rawTx<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token string">&quot;base64&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">\`</span><span class="token string">txhash: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">\${</span><span class="token keyword">await</span> <span class="token constant">CONNECTION</span><span class="token punctuation">.</span><span class="token function">sendEncodedTransaction</span><span class="token punctuation">(</span>encodedTransaction<span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">\`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// d\u6B65\u9A5F\u53EF\u4EE5\u4F7F\u7528\u4EE5\u4E0B\u65B9\u6CD5\u53D6\u4EE3\uFF0C\u4E0A\u9762\u662F\u70BA\u4E86\u628A\u5B8C\u6574\u6B65\u9A5F\u771F\u5BE6\u5448\u73FE</span>
+  <span class="token comment">// console.log(\`txhash: \${await CONNECTION.sendRawTransaction(rawTx)}\`);</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>
+  <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> process<span class="token punctuation">.</span><span class="token function">exit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    process<span class="token punctuation">.</span><span class="token function">exit</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br></div></div>`,2);function t(e,o){return p}var l=n(a,[["render",t],["__file","send-tx.html.vue"]]);export{l as default};

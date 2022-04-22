@@ -1,0 +1,1 @@
+const e={key:"v-09e730af",path:"/tour/get-sol-balance.html",title:"Get Sol Balance",lang:"en-US",frontmatter:{},excerpt:"",headers:[],git:{updatedTime:1637996565e3,contributors:[{name:"yihau",email:"a122092487@gmail.com",commits:2}]},filePathRelative:"tour/get-sol-balance.md"};export{e as data};

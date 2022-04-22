@@ -1,0 +1,1 @@
+const e={key:"v-0b4871f3",path:"/tour/retrieve-keypair.html",title:"Retrieve Keypair",lang:"en-US",frontmatter:{},excerpt:"",headers:[],git:{updatedTime:1636285795e3,contributors:[{name:"yihau",email:"a122092487@gmail.com",commits:1}]},filePathRelative:"tour/retrieve-keypair.md"};export{e as data};

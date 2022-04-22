@@ -1,0 +1,1 @@
+const e={key:"v-d138eaa2",path:"/zh/advanced/token/wrapped-sol/create-token-account.html",title:"Create Token Account",lang:"zh-TW",frontmatter:{},excerpt:"",headers:[],git:{updatedTime:1636285795e3,contributors:[{name:"yihau",email:"a122092487@gmail.com",commits:1}]},filePathRelative:"zh/advanced/token/wrapped-sol/create-token-account.md"};export{e as data};

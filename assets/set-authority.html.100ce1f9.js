@@ -1,0 +1,1 @@
+const t={key:"v-3b96fd3c",path:"/zh/advanced/token/set-authority.html",title:"Set Authority",lang:"zh-TW",frontmatter:{},excerpt:"",headers:[],git:{updatedTime:1636285795e3,contributors:[{name:"yihau",email:"a122092487@gmail.com",commits:1}]},filePathRelative:"zh/advanced/token/set-authority.md"};export{t as data};

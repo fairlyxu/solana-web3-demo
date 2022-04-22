@@ -1,0 +1,1 @@
+const e={key:"v-5451dee8",path:"/zh/advanced/metaplex/get-tokenmeta.html",title:"Get Tokenmeta",lang:"zh-TW",frontmatter:{},excerpt:"",headers:[],git:{updatedTime:1636285795e3,contributors:[{name:"yihau",email:"a122092487@gmail.com",commits:1}]},filePathRelative:"zh/advanced/metaplex/get-tokenmeta.md"};export{e as data};

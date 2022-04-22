@@ -1,0 +1,1 @@
+const e={key:"v-c97bf8f8",path:"/zh/advanced/durable-nonce/create-nonce-account.html",title:"Create Nonce Account",lang:"zh-TW",frontmatter:{},excerpt:"",headers:[],git:{updatedTime:1636285795e3,contributors:[{name:"yihau",email:"a122092487@gmail.com",commits:1}]},filePathRelative:"zh/advanced/durable-nonce/create-nonce-account.md"};export{e as data};

@@ -1,0 +1,1 @@
+const t={key:"v-3079eed3",path:"/tour/create-token-account.html",title:"Create Token Account",lang:"en-US",frontmatter:{},excerpt:"",headers:[],git:{updatedTime:1636285795e3,contributors:[{name:"yihau",email:"a122092487@gmail.com",commits:1}]},filePathRelative:"tour/create-token-account.md"};export{t as data};

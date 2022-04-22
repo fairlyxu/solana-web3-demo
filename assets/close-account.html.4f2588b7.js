@@ -1,0 +1,1 @@
+const t={key:"v-9cc7d508",path:"/zh/advanced/token/close-account.html",title:"Close Account",lang:"zh-TW",frontmatter:{},excerpt:"",headers:[],git:{updatedTime:1636285795e3,contributors:[{name:"yihau",email:"a122092487@gmail.com",commits:1}]},filePathRelative:"zh/advanced/token/close-account.md"};export{t as data};

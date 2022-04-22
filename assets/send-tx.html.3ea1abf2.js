@@ -1,0 +1,1 @@
+const e={key:"v-e8835796",path:"/zh/advanced/send-tx.html",title:"Send Tx",lang:"zh-TW",frontmatter:{},excerpt:"",headers:[],git:{updatedTime:1636285795e3,contributors:[{name:"yihau",email:"a122092487@gmail.com",commits:1}]},filePathRelative:"zh/advanced/send-tx.md"};export{e as data};

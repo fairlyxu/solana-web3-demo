@@ -1,0 +1,23 @@
+import{_ as n,e as s}from"./app.50ff3e54.js";const a={},p=s(`<h1 id="get-mint" tabindex="-1"><a class="header-anchor" href="#get-mint" aria-hidden="true">#</a> Get Mint</h1><div class="language-typescript ext-ts line-numbers-mode"><pre class="language-typescript"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> Keypair<span class="token punctuation">,</span> Transaction<span class="token punctuation">,</span> SystemProgram<span class="token punctuation">,</span> Connection<span class="token punctuation">,</span> PublicKey <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;@solana/web3.js&quot;</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token punctuation">{</span> getMint <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;@solana/spl-token&quot;</span><span class="token punctuation">;</span>
+
+<span class="token comment">// connection</span>
+<span class="token keyword">const</span> connection <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Connection</span><span class="token punctuation">(</span><span class="token string">&quot;https://api.devnet.solana.com&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> mintPubkey <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PublicKey</span><span class="token punctuation">(</span><span class="token string">&quot;2GouGzZ5Z5s8FJmwPkca8Urma64WBFZ8twRCUbLQARkb&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// \u62FFmint\u7684\u8CC7\u8A0A</span>
+
+<span class="token comment">// \u4F60\u53EF\u4EE5\u900F\u904Emint\u7684\u5730\u5740\u4F86\u6293\u53D6\u4ED6\u88E1\u9762\u7684\u8A73\u7D30\u8CC7\u8A0A</span>
+
+<span class="token punctuation">(</span><span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> mint <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">getMint</span><span class="token punctuation">(</span>connection<span class="token punctuation">,</span> mintPubkey<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>mint<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// \u4F60\u6703\u767C\u73FEname, symbol, image\u4E26\u4E0D\u5728\u56DE\u4F86\u7684\u8CC7\u8A0A\u4E0A</span>
+  <span class="token comment">// \u56E0\u70BA\u7576\u521Dsolana\u4E26\u6C92\u6709\u628A\u9019\u5E7E\u500B\u6B04\u4F4D\u4E5F\u898F\u5283\u4E0A\u93C8</span>
+  <span class="token comment">// \u5982\u679C\u6709\u9700\u8981\u6293\u53D6\u76F8\u95DC\u8CC7\u8A0A\u53EF\u4EE5\u53C3\u8003</span>
+  <span class="token comment">// https://github.com/solana-labs/token-list</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br></div></div>`,2);function t(e,o){return p}var l=n(a,[["render",t],["__file","get-mint.html.vue"]]);export{l as default};
