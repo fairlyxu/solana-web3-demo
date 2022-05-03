@@ -55,6 +55,6 @@ npm install
 執行範例
 
 ```bash
-npx ts-node -s <FILE_HERE>
+ts-node <FILE_HERE>
 ```
 
