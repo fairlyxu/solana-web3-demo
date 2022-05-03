@@ -5,7 +5,7 @@ import { getMint } from "@solana/spl-token";
 // connection
 const connection = new Connection("https://api.devnet.solana.com");
 
-const mintPubkey = new PublicKey("2GouGzZ5Z5s8FJmwPkca8Urma64WBFZ8twRCUbLQARkb");
+const mintPubkey = new PublicKey("CM65wduZFKpQddxPerfZ39TmfNTNuQVytbiViyJKb6xw");
 
 // 拿mint的資訊
 

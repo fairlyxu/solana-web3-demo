@@ -3,6 +3,7 @@ import { Keypair, Transaction, SystemProgram, TransactionInstruction} from "@sol
 import { ALICE, CONNECTION, FEE_PAYER, TEST_MINT } from "../../../../helper/const";
 
 import * as SPLToken from "@solana/spl-token";
+import * as bs58 from "bs58";
 
 // 增加餘額
 
@@ -28,7 +29,12 @@ async function main() {
 
   // 1. 暫時的token account
 
-  let tmpAccount = Keypair.generate();
+   let tmpAccount = Keypair.generate();
+  /*const tmpAccount = Keypair.fromSecretKey(
+    bs58.decode("2GRQvUUNyD7myW2uPq9XJWoaB6gekuE73tgpnwLtoUXYdW8AFBz6F6Eb5DbUxMgkoGLztR2hpScpnpNXjp8FiwYr")
+  );
+*/
+
   // wrapped sol的decimals是9
   let amount = 1e9;
   let tx1 = new Transaction();
@@ -66,6 +72,7 @@ async function main() {
   console.log(`tx1 txhash: ${await CONNECTION.sendTransaction(tx1, [FEE_PAYER, tmpAccount, ALICE])}`);
 
   // 2. SyncNative
+  
   let tx2 = new Transaction();
   tx2.add(
     SystemProgram.transfer({
@@ -88,7 +95,7 @@ async function main() {
   );
   tx2.feePayer = FEE_PAYER.publicKey;
 
-  console.log(`ata txhash: ${await CONNECTION.sendTransaction(tx2, [FEE_PAYER, ALICE])}`);
+  console.log(`ata txhash: ${await CONNECTION.sendTransaction(tx2, [FEE_PAYER, ALICE])}`); 
 }
 
 main().then(

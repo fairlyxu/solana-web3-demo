@@ -9,17 +9,18 @@ const connection = new Connection("https://api.devnet.solana.com");
 const feePayer = Keypair.fromSecretKey(
   bs58.decode("588FU4PktJWfGfxtzpAAXywSNt74AvtroVzGfKkVN1LwRuvHwKGr851uH8czM5qm4iqLbs1kKoMKtMJG4ATR7Ld2")
 );
+console.log("feePayer:",feePayer)
 
 // G2FAbFQPFa5qKXCetoFZQEvF9BVvCKbvUZvodpVidnoY
 const alice = Keypair.fromSecretKey(
-  bs58.decode("4NMwxzmYj2uvHuq8xoqhY8RXg63KSVJM1DXkpbmkUY7YQWuoyQgFnnzn6yo3CMnqZasnNPNuAT2TLwQsCaKkUddp")
+  bs58.decode("2GRQvUUNyD7myW2uPq9XJWoaB6gekuE73tgpnwLtoUXYdW8AFBz6F6Eb5DbUxMgkoGLztR2hpScpnpNXjp8FiwYr")
 );
+console.log("alice:",alice)
+const mintPubkey = new PublicKey("3vvJjVngbyo77EAp6bzJnHJUrqdu65gJ6g2KiKRivRvw");
 
-const mintPubkey = new PublicKey("AjMpnWhqrbFPJTQps4wEPNnGuQPMKUcfqHUqAeEf1WM4");
+const tokenAccount1Pubkey = new PublicKey("5qwnQfmsTjLwTsDqtL2wBfuWkybtnA87ShjLZAqeJgea");
 
-const tokenAccount1Pubkey = new PublicKey("37sAdhEFiYxKnQAm7CPd5GLK1ZxWovqn3p87kKjfD44c");
-
-const tokenAccount2Pubkey = new PublicKey("CFEPU5Jd6DNj8gpjPLJ1d9i4xSJDGYNV7n6qw53zE3n1");
+const tokenAccount2Pubkey = new PublicKey("9bvp44PqRARXmWzfmR9KjEkrT2vifpC1k5xtbRzwgw3e");
 
 // mint token
 

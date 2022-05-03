@@ -20,6 +20,16 @@
 * [查詢代幣餘額](tour/get-token-balance/main.ts)
 * [代幣轉帳](tour/token-transfer/main.ts)
 
+
+### NFT
+
+* [查询NFTmeta信息](nft/001getNFTMeta.ts)
+* [查询查询NFT拥有者](nft/002getNFTOwner.ts)
+* [获取账户的所有NFT](nft/003getAllNFTfromWallet.ts)
+* [MintNFT](nft/004mintNFT.ts)
+* [交易NFT](nft/005transferNFT) 
+
+
 ### Advanced
 
 * [代幣](advanced/token/README.md)
