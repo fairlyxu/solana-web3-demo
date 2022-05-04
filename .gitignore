@@ -7,3 +7,8 @@ docs/.vuepress/dist/
 
 #config
 config/handleKey_dev.ts
+
+
+.DS_Store
+package-lock.json
+yarn.lock
