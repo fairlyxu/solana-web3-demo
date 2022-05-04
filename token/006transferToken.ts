@@ -1,6 +1,7 @@
 import { clusterApiUrl, Connection, PublicKey, Keypair, Transaction } from "@solana/web3.js";
 import { getOrCreateAssociatedTokenAccount, createTransferCheckedInstruction, TOKEN_PROGRAM_ID, transferChecked } from "@solana/spl-token";
 import * as bs58 from "bs58";
+import Private_Key from "../config/handleKey"; 
 
 (async () => {
   // connection
@@ -11,9 +12,9 @@ import * as bs58 from "bs58";
     bs58.decode("588FU4PktJWfGfxtzpAAXywSNt74AvtroVzGfKkVN1LwRuvHwKGr851uH8czM5qm4iqLbs1kKoMKtMJG4ATR7Ld2")
   );
 
-  // G2FAbFQPFa5qKXCetoFZQEvF9BVvCKbvUZvodpVidnoY 
+  // token owner
   const alice = Keypair.fromSecretKey(
-    bs58.decode("2GRQvUUNyD7myW2uPq9XJWoaB6gekuE73tgpnwLtoUXYdW8AFBz6F6Eb5DbUxMgkoGLztR2hpScpnpNXjp8FiwYr")
+    bs58.decode(Private_Key)
   );
 
   const mintPubkey = new PublicKey("Ay87vN7TNMSFPAqzwHQsPGUvgJiWkeieDraDF23N3tjb");

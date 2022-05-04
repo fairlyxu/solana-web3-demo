@@ -7,9 +7,10 @@ import {
   createMint,
 } from "@solana/spl-token";
 import * as bs58 from "bs58";
-import { min } from "bn.js";
+import Private_Key from "../config/handleKey";  
 
-(async () => {
+
+(async () => { 
   // connection
   const connection = new Connection(clusterApiUrl("devnet"), "confirmed");
 
@@ -17,10 +18,10 @@ import { min } from "bn.js";
   const feePayer = Keypair.fromSecretKey(
     bs58.decode("588FU4PktJWfGfxtzpAAXywSNt74AvtroVzGfKkVN1LwRuvHwKGr851uH8czM5qm4iqLbs1kKoMKtMJG4ATR7Ld2")
   );
-
-  // G2FAbFQPFa5qKXCetoFZQEvF9BVvCKbvUZvodpVidnoY
+ 
+  // token creator
   const alice = Keypair.fromSecretKey(
-    bs58.decode("2GRQvUUNyD7myW2uPq9XJWoaB6gekuE73tgpnwLtoUXYdW8AFBz6F6Eb5DbUxMgkoGLztR2hpScpnpNXjp8FiwYr")
+    bs58.decode(Private_Key)
   );
 
   // 1) use build-in function

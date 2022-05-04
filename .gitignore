@@ -4,3 +4,6 @@ node_modules/
 docs/.vuepress/.temp/
 docs/.vuepress/.cache/
 docs/.vuepress/dist/
+
+#config
+config/handleKey_dev.ts

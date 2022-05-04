@@ -1,23 +1,24 @@
 import { clusterApiUrl, Connection, PublicKey, Keypair, Transaction } from "@solana/web3.js";
 import { getOrCreateAssociatedTokenAccount,createTransferCheckedInstruction, TOKEN_PROGRAM_ID, transferChecked } from "@solana/spl-token";
 import * as bs58 from "bs58";
-
+import Private_Key from "../config/handleKey";  
 
 (async () => {
   // connection
   const connection = new Connection(clusterApiUrl("devnet"), "confirmed");
 
-  // 5YNmS1R9nNSCDzb5a7mMJ1dwK9uHeAAF4CmPEwKgVWr8
+  // fee payer
   const feePayer = Keypair.fromSecretKey(
     bs58.decode("588FU4PktJWfGfxtzpAAXywSNt74AvtroVzGfKkVN1LwRuvHwKGr851uH8czM5qm4iqLbs1kKoMKtMJG4ATR7Ld2")
+    
   );
 
-  // G2FAbFQPFa5qKXCetoFZQEvF9BVvCKbvUZvodpVidnoY 
+  // sender  
   const alice = Keypair.fromSecretKey(
-    bs58.decode("2GRQvUUNyD7myW2uPq9XJWoaB6gekuE73tgpnwLtoUXYdW8AFBz6F6Eb5DbUxMgkoGLztR2hpScpnpNXjp8FiwYr")
+    bs58.decode(Private_Key)
   );
 
-  const mintPubkey = new PublicKey("EbTBQACKpfLBbuf5MprJfEcQ1C4uvoiWh5MTDjkjzpRf");      
+  const mintPubkey = new PublicKey("GPhKKPzyKCbCi3sqredBso4PrEGbTyuvPpdxUGr1U1RW");      
  
   const senderPubkey = new PublicKey("5qwnQfmsTjLwTsDqtL2wBfuWkybtnA87ShjLZAqeJgea");
   const recivePubkey = new PublicKey("EtFg2LC6y9i4U4fYWEESXischtRcJnxNYfrMQRxagX41");
@@ -40,8 +41,6 @@ import * as bs58 from "bs58";
     recivePubkey // owner,
   ); 
   console.log("recieve account : ",tokenAccountYPubkey.address.toBase58()); 
-
-
  
  
   {

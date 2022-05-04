@@ -1,6 +1,8 @@
 import { clusterApiUrl, Connection, PublicKey, Keypair, Transaction } from "@solana/web3.js";
 import { getOrCreateAssociatedTokenAccount,createMintToCheckedInstruction, mintToChecked } from "@solana/spl-token";
 import * as bs58 from "bs58";
+import Private_Key from "../config/handleKey"; 
+
 
 (async () => {
   // connection
@@ -11,9 +13,9 @@ import * as bs58 from "bs58";
     bs58.decode("588FU4PktJWfGfxtzpAAXywSNt74AvtroVzGfKkVN1LwRuvHwKGr851uH8czM5qm4iqLbs1kKoMKtMJG4ATR7Ld2")
   );
 
-  // G2FAbFQPFa5qKXCetoFZQEvF9BVvCKbvUZvodpVidnoY
+  // mint owner
   const alice = Keypair.fromSecretKey(
-    bs58.decode("2GRQvUUNyD7myW2uPq9XJWoaB6gekuE73tgpnwLtoUXYdW8AFBz6F6Eb5DbUxMgkoGLztR2hpScpnpNXjp8FiwYr")
+    bs58.decode(Private_Key)
   );
 
   const mintPubkey = new PublicKey("B9nexcxVpdBJsohiVmupYadjhggGvsyzTGNxmSvnW1VP");  //token address
@@ -26,9 +28,7 @@ import * as bs58 from "bs58";
   ); 
   console.log("Token Account: ",tokenAccountPubkey.address.toBase58());
 
-
-  //const tokenAccountPubkey = new PublicKey("6gjAtv2Wi6Ed7F8Jis4vaJDYXLUfqgj62HsBcuiF7Z62");// token aacount address
-
+ 
   // 1) use build-in function
   {
     let txhash = await mintToChecked(
